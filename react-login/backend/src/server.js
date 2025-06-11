@@ -1,14 +1,16 @@
 const express = require('express');
-const routes = require('./routes')
+const routes = require('./routes');
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
-app.use(routes);
+app.use(cors());
+app.use(routes); // sem prefixo, então POST para /login
 
-app.get('/', (req,res)=> {
+app.get('/', (req,res) => {
     res.send("Hello World");
 });
 
-app.listen(3000, () =>{
+app.listen(3000, () => {
     console.log('Listening on port 3000');
 });
